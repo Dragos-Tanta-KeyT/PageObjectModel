@@ -53,6 +53,56 @@ public class XpathExample3 extends BaseTest{
 		
 		////bdi[text()='10.35']/ancestor::span[@class='price']/preceding-sibling::div
 		
+		WebElement addToCart = driver.findElement
+				(By.xpath("(//bdi[text()='18.49'])[2]/../../../following-sibling::a"));
+		jse.executeScript
+		("arguments[0].setAttribute('style', 'background:orange; border:4px solid green')", addToCart);
+		
+		action.scrollByAmount(0, 900).perform();
+		
+		//xpath operators 
+		/*
+		 *  = equals
+		 * != not equals
+		 * < less than
+		 * <= less than or equal to 
+		 * > greater than
+		 * >= greather than or equal to
+		 * or
+		 * and
+		 */
+		//less than
+		WebElement price7 = driver.findElement(By.xpath("//bdi[text()<8]"));
+		jse.executeScript
+		("arguments[0].setAttribute('style', 'background:orange; border:4px solid green')", price7);
+		
+		//greater than 
+		WebElement price100 = driver.findElement(By.xpath("//bdi[text()>80.20]"));
+		jse.executeScript
+		("arguments[0].setAttribute('style', 'background:orange; border:4px solid green')", price100);
+		
+		//multiple operators --> greater than and less than
+		WebElement price80 = driver.findElement(By.xpath("//bdi[text()>80.00 and text()<100]"));
+		jse.executeScript
+		("arguments[0].setAttribute('style', 'background:orange; border:4px solid green')", price80);
+	
+		
+		/*
+		 * Ne referim la elementul care contine 2, adica numarul de pagini din shop (jos sub carti)
+		 * 
+		 * Varianta mai complexa :
+		 * //*[self::span or self::a][contains(@class, 'page-numbers') and not(contains(text(), '1') or contains(text(), '→'))]
+		 *
+		 * Varianta mai simpla :
+		 *	//ul/li[*>1]
+		 *
+		 * //*
+		 * *
+		 * @*
+		 *
+		 *
+		 */
+		
 	}
 	
 	
