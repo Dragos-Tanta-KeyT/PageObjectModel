@@ -3,6 +3,7 @@ package tests;
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.interactions.Actions;
 import org.testng.annotations.Test;
 
 import utils.BaseTest;
@@ -16,6 +17,8 @@ public class XpathExample2 extends BaseTest{
 	 * 3. Xpath poate sa acceseze pe baza de index orice element. Css doar list items 
 	 * 
 	 */
+	
+	//Xpath AXES
 	
 	@Test
 	public void xpathExample() {
@@ -62,10 +65,37 @@ public class XpathExample2 extends BaseTest{
 		jse.executeScript
 		("arguments[0].setAttribute('style', 'background:orange; border:4px solid red')", rememberMe);
 		rememberMe.click();
+	
+		//following-sibling --> coboara pe urmatorul frate
+		WebElement forgotPass =  driver.findElement
+				(By.xpath("//div[contains(@class, 'login_field')]/following-sibling::div/a"));
+		jse.executeScript
+		("arguments[0].setAttribute('style', 'background:pink; border:4px solid red')", forgotPass);
+		
+		//ancestor --> stie sa urce pe parinti si bunici
+		WebElement form = driver.findElement
+				(By.xpath("//input[@id='rememberme']/ancestor::div[@class='form_wrap']"));
+		jse.executeScript
+		("arguments[0].setAttribute('style', 'background:yellow; border:4px solid red')", form);
+		
+		//urc pe stramos cu ancestor si cobor pe copil cu child
+		WebElement closeButton =  driver.findElement
+				(By.xpath("//input[@id='rememberme']/ancestor::div[@id='popup_login']/child::a[@class='popup_close']"));
+		jse.executeScript
+		("arguments[0].setAttribute('style', 'background:purple; border:4px solid red')", closeButton);
+	
+		//preceding-sibling --> urca pe fratele precedent
+		WebElement rememberForgetBox = driver.findElement
+				(By.xpath("//div[contains(@class, 'submit_field')]/preceding-sibling::div[contains(@class, 'remember_field')]"));
+		jse.executeScript
+		("arguments[0].setAttribute('style', 'background:purple; border:4px solid blue')", rememberForgetBox);
+		
+		//preceding --> urca in sus in dom nu are nevoie de relatie de rudenie
+		WebElement submitButton= driver.findElement
+				(By.xpath("//div[@class='top_panel_middle']/preceding::input[@class='submit_button']"));
+		jse.executeScript
+		("arguments[0].setAttribute('style', 'background:purple; border:4px solid pink')", submitButton);
+		
 	}
-	
-	
-	
-	
 	
 }
