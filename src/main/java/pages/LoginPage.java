@@ -18,7 +18,8 @@ public class LoginPage extends SeleniumWrappers{
 	public By sumbitButton = By.className("submit_button");
 	public By closePopUpButton = By.className("popup_close");
 	public By logoutButton = By.linkText("Logout");
-	
+	public By loginSucessMsg = By.cssSelector("div[class*='sc_infobox_style_success']");
+	public By loginErrorMsg = By.cssSelector("div[class*='sc_infobox_style_error']");
 	
 	public void loginInApp(String user, String pass) {
 		
