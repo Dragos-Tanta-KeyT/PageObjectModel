@@ -10,6 +10,9 @@ public class ShopPage extends SeleniumWrappers {
 	
 	public By dropdown =  By.name("orderby");
 	
+	public By sliderInitialPosition = By.cssSelector("span[style='left: 0%;']");
+	public By sliderFinalPostition = By.cssSelector("span[style='left: 100%;']");
+	
 	
 	
 	public void selectByValue(String value) {

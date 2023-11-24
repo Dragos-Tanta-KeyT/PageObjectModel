@@ -22,6 +22,10 @@ public class MenuPage extends SeleniumWrappers {
 	public By shopLink = By.cssSelector("div[class='menu_main_wrap'] a[href='https://keybooks.ro/shop/']");
 	public By loginLink = By.linkText("Login");
 	public By contactsLink = By.linkText("CONTACTS");
+	public By blogLink = By.linkText("BLOG");
+	public By aboutLink = By.linkText("ABOUT");
+	public By portfolioLink = By.linkText("Portfolio");
+	public By masonryLInk = By.linkText("Masonry");
 	public By searchIcon = By.cssSelector("button[class*='icon-search']");
 	public By searchField = By.cssSelector("input[class='search_field']");
 	
