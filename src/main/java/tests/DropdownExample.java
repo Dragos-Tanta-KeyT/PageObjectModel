@@ -1,6 +1,7 @@
 package tests;
 
 import static org.testng.Assert.assertEquals;
+import static org.testng.Assert.assertTrue;
 
 import org.testng.annotations.Test;
 
@@ -13,9 +14,10 @@ public class DropdownExample extends BaseTest{
 		
 		app.click(app.menu.shopLink);
 		app.shop.selectByValue("date");
-		
+		app.click(app.menu.contactsLink);
 		assertEquals(driver.getCurrentUrl(), "https://keybooks.ro/shop/?orderby=date");
-		assertEquals(app.shop.getSelectedOption(), "Sort by latest");		
+		assertEquals(app.shop.getSelectedOption(), "Sort by latest");	
+		
 	}
 	
 	@Test(priority=2)

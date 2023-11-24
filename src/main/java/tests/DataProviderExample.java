@@ -50,7 +50,7 @@ public class DataProviderExample extends BaseTest{
 		
 	}
 	
-	@Test(dataProvider = "loginTestData")
+	@Test(dataProvider = "loginTestData", groups = "LoginFunctionality")
 	public void loginTest(String user, String pass, boolean success) {
 		ScreenShot.screenshot(driver);
 		app.click(app.menu.loginLink);
