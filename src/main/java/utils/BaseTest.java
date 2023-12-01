@@ -33,7 +33,7 @@ public class BaseTest {
 	public void tearDown() throws InterruptedException {
 		Thread.sleep(4000);
 		//driver.close();//inchide tabul curent
-		//driver.quit(); //inchide instanta de browser
+		driver.quit(); //inchide instanta de browser
 		
 	}
 	
