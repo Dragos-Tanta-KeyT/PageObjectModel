@@ -40,7 +40,7 @@ public class JavascriptExecutorExample extends BaseTest {
 		driver.get(driver.getCurrentUrl());	
 	}
 	
-	@Test
+	//@Test
 	public void example2() throws InterruptedException {
 		JavascriptExecutor jse = (JavascriptExecutor) driver;
 
@@ -130,6 +130,27 @@ public class JavascriptExecutorExample extends BaseTest {
 		String platfrom2 = jse.executeScript("return navigator.platform").toString();
 		System.out.println(platfrom2);
 		
+	}
+	
+	@Test
+	public void example3() {
+		
+		JavascriptExecutor jse = (JavascriptExecutor) driver;
+
+		System.out.println(driver.getTitle());
+
+		jse.executeScript("window.schimbaTitlu = function() { document.title='Altceva'}; "
+				+ "schimbaTitlu.call()");
+		
+		System.out.println(driver.getTitle());
+		
+		String jsHover = "var obj = document.createEvent('MouseEvent');"
+				+ "obj.initMouseEvent('mouseover', true);"
+				+ "arguments[0].dispatchEvent(obj)";
+		
+		jse.executeScript(jsHover, app.returnElement(app.menu.aboutLink));
+		jse.executeScript(jsHover, app.returnElement(app.menu.blogLink));
+
 	}
 
 }

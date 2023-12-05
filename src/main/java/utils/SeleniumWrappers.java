@@ -3,6 +3,7 @@ package utils;
 import java.time.Duration;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.StaleElementReferenceException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -68,10 +69,17 @@ public class SeleniumWrappers extends BaseTest{
 	
 	public void scrollVerically(int pixels) {
 		Actions action = new Actions(driver);
-		action.scrollByAmount(0, pixels).perform();
-			
+		action.scrollByAmount(0, pixels).perform();		
 	}
 	
+	public void scrollHorizontally(int pixels) {
+		Actions action = new Actions(driver);
+		action.scrollByAmount(pixels, 0).perform();		
+	}
 	
+	public void jsScrollVerically(int pixels) {
+		JavascriptExecutor jse = (JavascriptExecutor)driver;
+		jse.executeScript("window.scrollBy(0, "+pixels+")");	
+	}
 
 }
